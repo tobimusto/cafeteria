@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Cirilla Coffee | Café de Especialidad</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        :root {
+            /* Palette - Warm & Cozy Premium */
+            --bg-primary: #FAF6F0; /* Crema suave */
+            --bg-secondary: #F0EAE1; /* Crema ligeramente más oscuro */
+            --bg-dark: #2C1A14; /* Marrón Espresso */
+            
+            --text-primary: #2C1A14;
+            --text-secondary: #5E4B43;
+            --text-light: #FAF6F0;
+            
+            --accent: #C68A53; /* Tostado Caramelo */
+            --accent-hover: #B07643;
+            
+            /* Typography */
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'DM Sans', sans-serif;
+            
+            /* Transitions & Shadows */
+            --transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            --shadow: 0 15px 35px rgba(44, 26, 20, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--text-primary);
+            font-weight: 500;
+            line-height: 1.1;
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            font-weight: 300;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-padding {
+            padding: 8rem 0;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            border-radius: 0;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(198, 138, 83, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--text-primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--text-primary);
+            color: var(--bg-primary);
+        }
+        
+        .btn-outline-light {
+            background-color: transparent;
+            color: var(--text-light);
+            border: 1px solid var(--text-light);
+        }
+
+        .btn-outline-light:hover {
+            background-color: var(--text-light);
+            color: var(--bg-dark);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        header.scrolled {
+            background-color: rgba(250, 246, 240, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(44, 26, 20, 0.05);
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text-light);
+            letter-spacing: 1px;
+        }
+        
+        header.scrolled .logo {
+            color: var(--text-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            position: relative;
+        }
+
+        header.scrolled .nav-links a {
+            color: var(--text-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-image: url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(44, 26, 20, 0.6);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            color: var(--text-light);
+        }
+
+        .hero-subtitle {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: 5.5rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About / Essence Section */
+        .about {
+            background-color: var(--bg-primary);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-img {
+            position: relative;
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 200px 200px 0 0; /* Arch shape */
+            box-shadow: var(--shadow);
+        }
+
+        .about-img::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 200px;
+            height: 200px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-subtitle {
+            color: var(--accent);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title i {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .signature {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-style: italic;
+            color: var(--bg-dark);
+            margin-top: 2rem;
+        }
+
+        /* Highlights / Menu */
+        .menu {
+            background-color: var(--bg-secondary);
+        }
+
+        .menu-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 5rem auto;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .menu-card {
+            background: var(--bg-primary);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 2rem;
+            border: 5px solid var(--bg-secondary);
+            transition: var(--transition);
+        }
+
+        .menu-card:hover img {
+            border-color: var(--accent);
+        }
+
+        .menu-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .menu-card p {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .menu-price {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Gallery / Atmosphere */
+        .gallery {
+            padding: 4rem 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 300px);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item:nth-child(1) { grid-column: 1 / 3; grid-row: 1 / 3; }
+        .gallery-item:nth-child(2) { grid-column: 3 / 4; grid-row: 1 / 2; }
+        .gallery-item:nth-child(3) { grid-column: 4 / 5; grid-row: 1 / 2; }
+        .gallery-item:nth-child(4) { grid-column: 3 / 5; grid-row: 2 / 3; }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(44, 26, 20, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            color: #fff;
+            font-size: 2rem;
+        }
+
+        /* Contact & CTA */
+        .cta {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 8rem 0;
+            position: relative;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            color: var(--text-light);
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            color: rgba(250, 246, 240, 0.8);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-primary);
+            padding: 5rem 0 2rem 0;
+            border-top: 1px solid rgba(44, 26, 20, 0.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand .logo {
+            color: var(--bg-dark);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .footer-brand p {
+            max-width: 300px;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            color: #fff;
+        }
+
+        .footer-links h4 {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(44, 26, 20, 0.1);
+            font-size: 0.85rem;
+        }
+
+        /* Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.15s; }
+        .delay-2 { transition-delay: 0.3s; }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 4rem; }
+            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .about-img img { height: 400px; border-radius: 20px; }
+            .about-img::after { display: none; }
+            .menu-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* Mobile menu hidden for demo */
+            .hero h1 { font-size: 3rem; }
+            .section-title { font-size: 2.5rem; }
+            .menu-grid { grid-template-columns: 1fr; }
+            .gallery-grid { display: flex; flex-direction: column; }
+            .gallery-item { height: 250px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">La Cirilla Coffee</a>
+            <nav class="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#esencia">Esencia</a>
+                <a href="#menu">Menú</a>
+                <a href="#galeria">Ambiente</a>
+                <a href="#visitanos">Visítanos</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-content reveal">
+                <span class="hero-subtitle">Café de Especialidad</span>
+                <h1>El arte del café, <br>en cada taza.</h1>
+                <p>Seleccionamos los mejores granos de origen único y los tostamos con precisión para despertar tus sentidos.</p>
+                <a href="#menu" class="btn btn-primary" style="margin-top: 1rem;">Descubre el Menú</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Essence -->
+    <section class="section-padding about" id="esencia">
+        <div class="container about-grid">
+            <div class="about-img reveal">
+                <img src="https://images.unsplash.com/photo-1559525839-b184a4d698c7?q=80&w=1000&auto=format&fit=crop" alt="Barista preparando café">
+            </div>
+            <div class="about-text reveal delay-1">
+                <div class="section-header">
+                    <span class="section-subtitle">Nuestra Filosofía</span>
+                    <h2 class="section-title">Respeto por <i>el origen.</i></h2>
+                </div>
+                <p>En La Cirilla Coffee, creemos que un gran café comienza mucho antes de llegar a la taza. Viajamos para conocer a los productores, asegurando prácticas sostenibles y comercio justo.</p>
+                <p>Nuestro proceso de tueste artesanal en micro-lotes resalta las notas de cata únicas de cada grano, permitiéndote experimentar el verdadero sabor de Colombia, Etiopía o Costa Rica sin aditivos ni distracciones.</p>
+                <p>No hacemos simplemente café; elaboramos experiencias.</p>
+                
+                <div class="signature">La Cirilla Coffee</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Highlights -->
+    <section class="section-padding menu" id="menu">
+        <div class="container">
+            <div class="menu-header reveal">
+                <span class="section-subtitle">Lo más pedido</span>
+                <h2 class="section-title">Clásicos & <i>Especiales</i></h2>
+                <p>Una muestra de nuestras preparaciones más aclamadas por nuestros clientes habituales.</p>
+            </div>
+            
+            <div class="menu-grid">
+                <!-- Item 1 -->
+                <div class="menu-card reveal">
+                    <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800&auto=format&fit=crop" alt="Flat White">
+                    <h3>Flat White</h3>
+                    <p>Doble ristretto de origen Colombia, texturizado con leche entera para una microespuma sedosa y balance perfecto.</p>
+                    <div class="menu-price">$4.50</div>
+                </div>
+                <!-- Item 2 -->
+                <div class="menu-card reveal delay-1">
+                    <img src="https://images.unsplash.com/photo-1495474472205-51f750c0b8b6?q=80&w=800&auto=format&fit=crop" alt="V60 Pour Over">
+                    <h3>V60 Pour Over</h3>
+                    <p>Filtrado manual de Etiopía Yirgacheffe. Notas florales, cuerpo ligero y acidez brillante que recuerda al té negro.</p>
+                    <div class="menu-price">$5.00</div>
+                </div>
+                <!-- Item 3 -->
+                <div class="menu-card reveal delay-2">
+                    <img src="https://images.unsplash.com/photo-1610889556528-9a770e32642f?q=80&w=800&auto=format&fit=crop" alt="Espresso Perfecto">
+                    <h3>Espresso Perfecto</h3>
+                    <p>La esencia pura. Extracción de 25 segundos de nuestro blend de la casa para una crema espesa y notas a chocolate amargo.</p>
+                    <div class="menu-price">$3.00</div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 4rem;" class="reveal">
+                <a href="#" class="btn btn-outline">Ver Menú Completo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery" id="galeria">
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1200&auto=format&fit=crop" alt="Ambiente de la cafetería">
+                <div class="gallery-overlay"><i class="ph ph-instagram-logo"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop" alt="Taza de café">
+                <div class="gallery-overlay"><i class="ph ph-instagram-logo"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1525610553991-2bede1a236e2?q=80&w=800&auto=format&fit=crop" alt="Máquina de espresso">
+                <div class="gallery-overlay"><i class="ph ph-instagram-logo"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=1200&auto=format&fit=crop" alt="Granos de café">
+                <div class="gallery-overlay"><i class="ph ph-instagram-logo"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Contact -->
+    <section class="cta" id="visitanos">
+        <div class="container">
+            <div class="cta-content reveal">
+                <span class="section-subtitle" style="color: var(--text-light); margin-bottom: 1rem;">Te esperamos</span>
+                <h2>Tu pausa diaria <i>perfecta.</i></h2>
+                <p>Ya sea para trabajar con buen wifi, leer un libro o compartir con amigos, nuestro espacio está diseñado para hacerte sentir como en casa.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
+                    <a href="#" class="btn btn-primary">Hacer un pedido</a>
+                    <a href="#footer" class="btn btn-outline-light">Ver Ubicación</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">La Cirilla Coffee</a>
+                    <p>Elevando el estándar del café de especialidad, una taza a la vez.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="ph ph-instagram-logo"></i></a>
+                        <a href="#"><i class="ph ph-facebook-logo"></i></a>
+                        <a href="#"><i class="ph ph-twitter-logo"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Visítanos</h4>
+                    <ul>
+                        <li style="color: var(--text-secondary);">Av. Los Granos 123<br>Barrio Bohemio, Ciudad</li>
+                        <li style="margin-top: 1rem;"><a href="#" style="color: var(--accent); text-decoration: underline;">Ver en Google Maps</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Horarios</h4>
+                    <ul>
+                        <li><strong style="color: var(--bg-dark);">Lun - Vie:</strong> 7:30am - 8:00pm</li>
+                        <li><strong style="color: var(--bg-dark);">Sábados:</strong> 8:30am - 9:00pm</li>
+                        <li><strong style="color: var(--bg-dark);">Domingos:</strong> 9:00am - 6:00pm</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li>hola@lacirillacoffee.com</li>
+                        <li>+1 (555) 123-4567</li>
+                        <li style="margin-top: 1rem;">Trabaja con nosotros</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 La Cirilla Coffee. Todos los derechos reservados. | Diseñado con pasión.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Header Scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for Reveal Animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    const headerOffset = 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+  
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
