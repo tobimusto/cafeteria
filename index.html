@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Cirilla Coffee | Café de Especialidad</title>
+    <title>La Cirila Café | Café de Especialidad</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Phosphor Icons -->
+    <!-- Lenis & Phosphor Icons -->
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
@@ -40,6 +41,39 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-hover);
+        }
+
+        /* Lenis Setup */
+        html.lenis, html.lenis body {
+            height: auto;
+            width: 100%;
+        }
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+        .lenis.lenis-smooth iframe {
+            pointer-events: none;
         }
 
         body {
@@ -212,7 +246,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            background-image: url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2000&auto=format&fit=crop');
+            background-image: url('./fachada.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -460,10 +494,10 @@
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=2000&auto=format&fit=crop');
+            background-image: url('./personas.jpg');
             background-size: cover;
             background-position: center;
-            opacity: 0.1;
+            opacity: 0.15;
             z-index: 0;
         }
 
@@ -597,7 +631,7 @@
     <!-- Header -->
     <header id="header">
         <div class="container nav-container">
-            <a href="#" class="logo">La Cirilla Coffee</a>
+            <a href="#" class="logo">La Cirila Café</a>
             <nav class="nav-links">
                 <a href="#inicio">Inicio</a>
                 <a href="#esencia">Esencia</a>
@@ -624,18 +658,18 @@
     <section class="section-padding about" id="esencia">
         <div class="container about-grid">
             <div class="about-img reveal">
-                <img src="https://images.unsplash.com/photo-1559525839-b184a4d698c7?q=80&w=1000&auto=format&fit=crop" alt="Barista preparando café">
+                <img src="./la cirila.jpg" alt="La Cirila">
             </div>
             <div class="about-text reveal delay-1">
                 <div class="section-header">
                     <span class="section-subtitle">Nuestra Filosofía</span>
                     <h2 class="section-title">Respeto por <i>el origen.</i></h2>
                 </div>
-                <p>En La Cirilla Coffee, creemos que un gran café comienza mucho antes de llegar a la taza. Viajamos para conocer a los productores, asegurando prácticas sostenibles y comercio justo.</p>
-                <p>Nuestro proceso de tueste artesanal en micro-lotes resalta las notas de cata únicas de cada grano, permitiéndote experimentar el verdadero sabor de Colombia, Etiopía o Costa Rica sin aditivos ni distracciones.</p>
+                <p>En La Cirila Café, creemos que un gran momento comienza mucho antes de llegar a la mesa. Preparamos todo con amor y dedicación.</p>
+                <p>Nuestro proceso artesanal resalta los sabores únicos de nuestra pastelería y cafetería, permitiéndote disfrutar de momentos inolvidables.</p>
                 <p>No hacemos simplemente café; elaboramos experiencias.</p>
                 
-                <div class="signature">La Cirilla Coffee</div>
+                <div class="signature">La Cirila Café</div>
             </div>
         </div>
     </section>
@@ -652,24 +686,21 @@
             <div class="menu-grid">
                 <!-- Item 1 -->
                 <div class="menu-card reveal">
-                    <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800&auto=format&fit=crop" alt="Flat White">
-                    <h3>Flat White</h3>
-                    <p>Doble ristretto de origen Colombia, texturizado con leche entera para una microespuma sedosa y balance perfecto.</p>
-                    <div class="menu-price">$4.50</div>
+                    <img src="./cookies y batido.jpg" alt="Cookies y Batidos">
+                    <h3>Cookies y Batidos</h3>
+                    <p>Nuestras clásicas cookies artesanales acompañadas de los mejores batidos para disfrutar en cualquier momento.</p>
                 </div>
                 <!-- Item 2 -->
                 <div class="menu-card reveal delay-1">
-                    <img src="https://images.unsplash.com/photo-1495474472205-51f750c0b8b6?q=80&w=800&auto=format&fit=crop" alt="V60 Pour Over">
-                    <h3>V60 Pour Over</h3>
-                    <p>Filtrado manual de Etiopía Yirgacheffe. Notas florales, cuerpo ligero y acidez brillante que recuerda al té negro.</p>
-                    <div class="menu-price">$5.00</div>
+                    <img src="./tortas.jpg" alt="Tortas Artesanales">
+                    <h3>Tortas Artesanales</h3>
+                    <p>Elaboradas con los mejores ingredientes. Desde las más clásicas hasta las más golosas. Especiales para compartir.</p>
                 </div>
                 <!-- Item 3 -->
                 <div class="menu-card reveal delay-2">
-                    <img src="https://images.unsplash.com/photo-1610889556528-9a770e32642f?q=80&w=800&auto=format&fit=crop" alt="Espresso Perfecto">
-                    <h3>Espresso Perfecto</h3>
-                    <p>La esencia pura. Extracción de 25 segundos de nuestro blend de la casa para una crema espesa y notas a chocolate amargo.</p>
-                    <div class="menu-price">$3.00</div>
+                    <img src="./picadas.jpg" alt="Picadas Especiales">
+                    <h3>Picadas Especiales</h3>
+                    <p>Porque no todo es dulce. Disfruta de nuestras picadas de fiambres y quesos seleccionados para tus tardes.</p>
                 </div>
             </div>
             
@@ -683,19 +714,19 @@
     <section class="gallery" id="galeria">
         <div class="gallery-grid">
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1200&auto=format&fit=crop" alt="Ambiente de la cafetería">
+                <img src="./sucursal.jpg" alt="Ambiente de la cafetería">
                 <div class="gallery-overlay"><i class="ph ph-instagram-logo"></i></div>
             </div>
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop" alt="Taza de café">
+                <img src="./alfajores.jpg" alt="Alfajores">
                 <div class="gallery-overlay"><i class="ph ph-instagram-logo"></i></div>
             </div>
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1525610553991-2bede1a236e2?q=80&w=800&auto=format&fit=crop" alt="Máquina de espresso">
+                <img src="./cookies2.jpg" alt="Cookies Especiales">
                 <div class="gallery-overlay"><i class="ph ph-instagram-logo"></i></div>
             </div>
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=1200&auto=format&fit=crop" alt="Granos de café">
+                <img src="./cookies4.jpg" alt="Más cookies">
                 <div class="gallery-overlay"><i class="ph ph-instagram-logo"></i></div>
             </div>
         </div>
@@ -709,8 +740,8 @@
                 <h2>Tu pausa diaria <i>perfecta.</i></h2>
                 <p>Ya sea para trabajar con buen wifi, leer un libro o compartir con amigos, nuestro espacio está diseñado para hacerte sentir como en casa.</p>
                 <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
-                    <a href="#" class="btn btn-primary">Hacer un pedido</a>
-                    <a href="#footer" class="btn btn-outline-light">Ver Ubicación</a>
+                    <a href="https://www.instagram.com/lacirilacafe/" target="_blank" class="btn btn-primary">Hacer un pedido</a>
+                    <a href="https://maps.app.goo.gl/iQbgPHoZ6CL5VcvV9" target="_blank" class="btn btn-outline-light">Ver Ubicación</a>
                 </div>
             </div>
         </div>
@@ -721,44 +752,41 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="#" class="logo">La Cirilla Coffee</a>
-                    <p>Elevando el estándar del café de especialidad, una taza a la vez.</p>
+                    <a href="#" class="logo">La Cirila Café</a>
+                    <p>Momentos únicos, sabores inolvidables.</p>
                     <div class="social-links">
-                        <a href="#"><i class="ph ph-instagram-logo"></i></a>
-                        <a href="#"><i class="ph ph-facebook-logo"></i></a>
-                        <a href="#"><i class="ph ph-twitter-logo"></i></a>
+                        <a href="https://www.instagram.com/lacirilacafe/" target="_blank"><i class="ph ph-instagram-logo"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61555895735787&sk=photos" target="_blank"><i class="ph ph-facebook-logo"></i></a>
                     </div>
                 </div>
                 
                 <div class="footer-links">
                     <h4>Visítanos</h4>
                     <ul>
-                        <li style="color: var(--text-secondary);">Av. Los Granos 123<br>Barrio Bohemio, Ciudad</li>
-                        <li style="margin-top: 1rem;"><a href="#" style="color: var(--accent); text-decoration: underline;">Ver en Google Maps</a></li>
+                        <li style="color: var(--text-secondary);">Ven a disfrutar con nosotros</li>
+                        <li style="margin-top: 1rem;"><a href="https://maps.app.goo.gl/iQbgPHoZ6CL5VcvV9" target="_blank" style="color: var(--accent); text-decoration: underline;">Ver en Google Maps</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
                     <h4>Horarios</h4>
                     <ul>
-                        <li><strong style="color: var(--bg-dark);">Lun - Vie:</strong> 7:30am - 8:00pm</li>
-                        <li><strong style="color: var(--bg-dark);">Sábados:</strong> 8:30am - 9:00pm</li>
-                        <li><strong style="color: var(--bg-dark);">Domingos:</strong> 9:00am - 6:00pm</li>
+                        <li><strong style="color: var(--bg-dark);">Lunes a Domingos</strong></li>
+                        <li>Consulta nuestros horarios<br>en redes sociales.</li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
                     <h4>Contacto</h4>
                     <ul>
-                        <li>hola@lacirillacoffee.com</li>
-                        <li>+1 (555) 123-4567</li>
-                        <li style="margin-top: 1rem;">Trabaja con nosotros</li>
+                        <li><a href="https://www.instagram.com/lacirilacafe/" target="_blank">@lacirilacafe</a></li>
+                        <li style="margin-top: 1rem;">Envíanos un mensaje para pedidos</li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2026 La Cirilla Coffee. Todos los derechos reservados. | Diseñado con pasión.</p>
+                <p>&copy; 2026 La Cirila Café. Todos los derechos reservados. | Diseñado con pasión.</p>
             </div>
         </div>
     </footer>
@@ -795,7 +823,20 @@
             observer.observe(element);
         });
 
-        // Smooth Scroll
+        // Lenis Smooth Scroll
+        const lenis = new Lenis({
+            autoRaf: true,
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+            infinite: false,
+        });
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
@@ -804,14 +845,7 @@
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     e.preventDefault();
-                    const headerOffset = 80;
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-  
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
+                    lenis.scrollTo(targetElement, { offset: -80 });
                 }
             });
         });
